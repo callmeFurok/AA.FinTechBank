@@ -1,0 +1,6 @@
+@AA.FinTechBank.Api_HostAddress = http://localhost:5294
+
+GET {{AA.FinTechBank.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
