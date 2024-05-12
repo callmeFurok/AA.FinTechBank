@@ -4,11 +4,13 @@ namespace AA.FinTechBank.Domain.IRepositories
 {
     public interface IClientRepository
     {
-        Task<List<EClient>> GetAllAsync(string id);
+        Task<List<EClient>> GetAllAsync();
         Task<EClient> GetByIdAsync(Guid clientId);
-        Task DeleteAsync(int id);
+        Task<bool> DeleteAsync(int id);
         Task<EClient> UpdateAsync(EClient client);
-        Task CreateAsync(EClient client);
+        Task<bool> CreateAsync(EClient client);
+
+        Task<bool> SaveAsync();
 
     }
 }
