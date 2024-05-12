@@ -1,6 +1,7 @@
 ﻿using AA.FinTechBank.Domain.Entities;
 using AA.FinTechBank.Domain.IRepositories;
 using AA.FinTechBank.Infrastructure.DbContextApp;
+using Microsoft.EntityFrameworkCore;
 
 namespace AA.FinTechBank.Infrastructure.Repositories
 {
@@ -23,9 +24,11 @@ namespace AA.FinTechBank.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<List<EClient>> GetAllAsync(string id)
+        public async Task<List<EClient>> GetAllAsync()
         {
-            throw new NotImplementedException();
+           List<EClient> clientList= await _context.Clients.ToListAsync();
+
+            return clientList;
         }
 
         public Task<EClient> GetByIdAsync(Guid clientId)
