@@ -22,7 +22,5 @@ namespace AA.FinTechBank.Domain.Entities
         public string ClientGenre { get; set; }
         public string ClientNationality { get; set; }
 
-
-
     }
 }
