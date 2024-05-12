@@ -3,15 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AA.FinTechBank.Domain", "AA.FinTechBank.Domain\AA.FinTechBank.Domain.csproj", "{3014182E-42B8-42F4-AC3D-0F9B4BD0A799}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AA.FinTechBank.Domain", "AA.FinTechBank.Domain\AA.FinTechBank.Domain.csproj", "{3014182E-42B8-42F4-AC3D-0F9B4BD0A799}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AA.FinTechBank.Application", "AA.FinTechBank.Application\AA.FinTechBank.Application.csproj", "{A5F0B9A6-97EC-4FE1-9464-4EE4074CB010}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AA.FinTechBank.Application", "AA.FinTechBank.Application\AA.FinTechBank.Application.csproj", "{A5F0B9A6-97EC-4FE1-9464-4EE4074CB010}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AA.FinTechBank.Infrastructure", "AA.FinTechBank.Infrastructure\AA.FinTechBank.Infrastructure.csproj", "{36C249BA-5F29-48A2-80EC-FCD591D584A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AA.FinTechBank.Infrastructure", "AA.FinTechBank.Infrastructure\AA.FinTechBank.Infrastructure.csproj", "{36C249BA-5F29-48A2-80EC-FCD591D584A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AA.FinTechBank.Common", "AA.FinTechBank.Common\AA.FinTechBank.Common.csproj", "{06E639A7-11A1-40B5-B86C-392975534F97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AA.FinTechBank.Common", "AA.FinTechBank.Common\AA.FinTechBank.Common.csproj", "{06E639A7-11A1-40B5-B86C-392975534F97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AA.FinTechBank.Api", "AA.FinTechBank.Api\AA.FinTechBank.Api.csproj", "{D658351E-4502-42D0-AB73-E905F488F964}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AA.FinTechBank.Api", "AA.FinTechBank.Api\AA.FinTechBank.Api.csproj", "{D658351E-4502-42D0-AB73-E905F488F964}"
+	ProjectSection(ProjectDependencies) = postProject
+		{06E639A7-11A1-40B5-B86C-392975534F97} = {06E639A7-11A1-40B5-B86C-392975534F97}
+		{3014182E-42B8-42F4-AC3D-0F9B4BD0A799} = {3014182E-42B8-42F4-AC3D-0F9B4BD0A799}
+		{A5F0B9A6-97EC-4FE1-9464-4EE4074CB010} = {A5F0B9A6-97EC-4FE1-9464-4EE4074CB010}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
