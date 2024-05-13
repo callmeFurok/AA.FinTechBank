@@ -11,6 +11,7 @@ namespace AA.FinTechBank.Infrastructure.DbContextApp
         }
 
        public DbSet<EClient> Clients { get; set; }
+        public DbSet<EApplicationUser> Users { get; set; }
 
     }
 }

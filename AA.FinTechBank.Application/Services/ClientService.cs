@@ -1,25 +1,30 @@
 ﻿using AA.FinTechBank.Application.IServices;
 using AA.FinTechBank.Common.Utils;
+using AA.FinTechBank.Domain.Dto;
 using AA.FinTechBank.Domain.Entities;
 using AA.FinTechBank.Domain.IRepositories;
+using AutoMapper;
 
 namespace AA.FinTechBank.Application.Services
 {
     public class ClientService : IClientService
     {
         private readonly IClientRepository _clientRepository;
-        public ClientService(IClientRepository clientRepository)
+        private readonly IMapper _mapper;
+
+        public ClientService(IClientRepository clientRepository,IMapper mapper)
         {
             _clientRepository = clientRepository;
+            _mapper = mapper;
         }
 
-        public async Task<ApiResponse<EClient>> CreateAsync(EClient client)
+        public async Task<ApiResponse<CreateClientDto>> CreateAsync(EClient client)
         {
             try
             {
-
-                await _clientRepository.CreateAsync(client);
-                var apiResponse = new ApiResponse<EClient>()
+                var clientToCreate = _mapper.Map<EClient>(client);
+                await _clientRepository.CreateAsync(clientToCreate);
+                var apiResponse = new ApiResponse<CreateClientDto>()
                 {
                     Success = true,
                     Message = "Usuario Creado",
@@ -32,7 +37,7 @@ namespace AA.FinTechBank.Application.Services
             catch (Exception e)
             {
 
-                var apiResponse = new ApiResponse<EClient>()
+                var apiResponse = new ApiResponse<CreateClientDto>()
                 {
                     Success = false,
                     Message = "Error al crear el usuario",
@@ -45,13 +50,13 @@ namespace AA.FinTechBank.Application.Services
 
         }
 
-        public async Task<ApiResponse<EClient>> DeleteAsync(Guid clientId)
+        public async Task<ApiResponse<string>> DeleteAsync(Guid clientId)
         {
             try
             {
 
                 await _clientRepository.DeleteAsync(clientId);
-                var apiResponse = new ApiResponse<EClient>()
+                var apiResponse = new ApiResponse<string>()
                 {
                     Success = true,
                     Message = "Usuario eliminado",
@@ -64,7 +69,7 @@ namespace AA.FinTechBank.Application.Services
             catch (Exception e)
             {
 
-                var apiResponse = new ApiResponse<EClient>()
+                var apiResponse = new ApiResponse<string>()
                 {
                     Success = false,
                     Message = "Error al eliminar el usuario",
@@ -83,6 +88,7 @@ namespace AA.FinTechBank.Application.Services
             {
 
                 var allClients = await _clientRepository.GetAllAsync() ?? throw new Exception();
+
                 var apiResponse = new ApiResponse<IEnumerable<EClient>>()
                 {
                     Success = true,
@@ -143,7 +149,7 @@ namespace AA.FinTechBank.Application.Services
 
         }
 
-        public async Task<ApiResponse<EClient>> UpdateAsync(Guid clientId, EClient client)
+        public async Task<ApiResponse<string>> UpdateAsync(Guid clientId, EClient client)
         {
             try
             {
@@ -152,7 +158,7 @@ namespace AA.FinTechBank.Application.Services
                 var clientExists = await _clientRepository.GetByIdAsync(clientId) ?? throw new Exception("No existe el cliente");
 
                 await _clientRepository.UpdateAsync(clientId, client);
-                var apiResponse = new ApiResponse<EClient>()
+                var apiResponse = new ApiResponse<string>()
                 {
                     Success = true,
                     Message = "Usuario actualizado",
@@ -165,7 +171,7 @@ namespace AA.FinTechBank.Application.Services
             catch (Exception e)
             {
 
-                var apiResponse = new ApiResponse<EClient>()
+                var apiResponse = new ApiResponse<string>()
                 {
                     Success = false,
                     Message = "Error al actualizar el usuario",

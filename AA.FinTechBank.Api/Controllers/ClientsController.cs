@@ -1,13 +1,16 @@
 ﻿using AA.FinTechBank.Application.IServices;
 using AA.FinTechBank.Common.Utils;
 using AA.FinTechBank.Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks.Dataflow;
 
 namespace AA.FinTechBank.Api.Controllers
 {
-    [Route("api/v1/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")]
+    [Authorize]
     public class ClientsController : ControllerBase
     {
         private readonly IClientService _clientService;
@@ -21,6 +24,8 @@ namespace AA.FinTechBank.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+
 
         public async Task<ActionResult<ApiResponse<IEnumerable<EClient>>>> GetAllAsync()
         {
@@ -97,7 +102,7 @@ namespace AA.FinTechBank.Api.Controllers
 
         }
 
-
+      
 
     }
 }
