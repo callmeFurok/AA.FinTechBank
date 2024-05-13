@@ -1,14 +1,15 @@
-﻿using AA.FinTechBank.Domain.Entities;
+﻿using AA.FinTechBank.Common.Utils;
+using AA.FinTechBank.Domain.Entities;
 
 namespace AA.FinTechBank.Application.IServices
 {
     public interface IClientService
     {
-        Task<List<EClient>> GetAllAsync();
-        Task<EClient> GetByIdAsync(Guid clientId);
-        Task<bool> DeleteAsync(int id);
-        Task<EClient> UpdateAsync(EClient client);
-        Task<bool> CreateAsync(EClient client);
+        Task<ApiResponse<IEnumerable<EClient>>> GetAllAsync();
+        Task<ApiResponse<EClient>> GetByIdAsync(Guid clientId);
+        Task<ApiResponse<EClient>> DeleteAsync(Guid clientId);
+        Task<ApiResponse<EClient>> UpdateAsync(Guid clientId,EClient client);
+        Task<ApiResponse<EClient>> CreateAsync(EClient client);
 
     }
 }
