@@ -13,37 +13,46 @@ namespace AA.FinTechBank.Infrastructure.Repositories
         {
             _context = context;
         }
-        public async Task<bool> CreateAsync(EClient client)
+        public async Task CreateAsync(EClient client)
         {
             await _context.Clients.AddAsync(client);
-            return await SaveAsync();
+            await SaveAsync();
         }
 
-        public Task<bool> DeleteAsync(int id)
+        public async Task DeleteAsync(Guid clientId)
         {
-            throw new NotImplementedException();
+            EClient clientToDelete = await GetByIdAsync(clientId);
+
+            _context.Clients.Remove(clientToDelete);
+
+            await SaveAsync();
         }
 
-        public async Task<List<EClient>> GetAllAsync()
+        public async Task<IEnumerable<EClient>> GetAllAsync()
         {
-           List<EClient> clientList= await _context.Clients.ToListAsync();
+            List<EClient> clientList = await _context.Clients.ToListAsync();
 
             return clientList;
         }
 
-        public Task<EClient> GetByIdAsync(Guid clientId)
+        public async Task<EClient> GetByIdAsync(Guid clientId)
         {
-            throw new NotImplementedException();
+            EClient clientById = await _context.Clients.FirstOrDefaultAsync(c => c.ClientId == clientId);
+
+            return clientById;
         }
 
-        public async Task<bool> SaveAsync()
+        public async Task SaveAsync()
         {
-            return await _context.SaveChangesAsync() > 0;
+            await _context.SaveChangesAsync();
         }
 
-        public Task<EClient> UpdateAsync(EClient client)
+        public async Task UpdateAsync(Guid clientId, EClient client)
         {
-            throw new NotImplementedException();
+            var clientToUpdate = await GetByIdAsync(clientId);
+            _context.Clients.Entry(clientToUpdate).State = EntityState.Detached;
+           _context.Clients.Update(client);
+            await SaveAsync();
         }
     }
 }
