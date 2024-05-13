@@ -4,6 +4,9 @@ El presente documento contiene las instrucciones para usar la aplicacion de prue
 ---
 - ⚠️ **Todo: Implementar las pruebas unitarias**
 - ⚠️ **Todo: Implementar Fronted**
+-  [Repositorio Docker Hub](https://hub.docker.com/r/aguirrealfredodev772/aafintechbankapi)
+-  [Repositorio Github](https://github.com/callmeFurok/AA.FinTechBank)
+
 ---
 
 ## Tabla de contenidos:
@@ -46,7 +49,10 @@ El presente documento contiene las instrucciones para usar la aplicacion de prue
 - Es necesario registarse para posteior a esto obtener un token
 - Una vez registrado, logueamos con las credenciales del registro y obtendremos el token
 - Se hace uso del token para poder acceder a los endpoints de ciente
-- Usar el archivo de postman para validar el funcionamiento de los endpoints
+- Se debe crear algunos clientes para listar todos los clientes
+- Usar el archivo de postman para validar el funcionamiento de los endpoints:
+  
+      FintechTest.postman_collection.json
 ---
 # Construido con
 
