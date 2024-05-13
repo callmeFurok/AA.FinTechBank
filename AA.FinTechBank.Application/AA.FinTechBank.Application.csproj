@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AA.FinTechBank.Common\AA.FinTechBank.Common.csproj" />
     <ProjectReference Include="..\AA.FinTechBank.Domain\AA.FinTechBank.Domain.csproj" />
   </ItemGroup>
 

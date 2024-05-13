@@ -1,4 +1,5 @@
 ﻿using AA.FinTechBank.Application.IServices;
+using AA.FinTechBank.Common.Utils;
 using AA.FinTechBank.Domain.Entities;
 using AA.FinTechBank.Domain.IRepositories;
 
@@ -11,35 +12,169 @@ namespace AA.FinTechBank.Application.Services
         {
             _clientRepository = clientRepository;
         }
-        public async Task<bool> CreateAsync(EClient client)
+
+        public async Task<ApiResponse<EClient>> CreateAsync(EClient client)
         {
-           
-                var isCreatedClient = await _clientRepository.CreateAsync(client);
-               return isCreatedClient;
-            
-           
+            try
+            {
+
+                await _clientRepository.CreateAsync(client);
+                var apiResponse = new ApiResponse<EClient>()
+                {
+                    Success = true,
+                    Message = "Usuario Creado",
+
+                };
+
+                return apiResponse;
+
+            }
+            catch (Exception e)
+            {
+
+                var apiResponse = new ApiResponse<EClient>()
+                {
+                    Success = false,
+                    Message = "Error al crear el usuario",
+                    Errors = new List<string>() { e.Message }
+
+                };
+
+                return apiResponse;
+            }
+
         }
 
-        public Task<bool> DeleteAsync(int id)
+        public async Task<ApiResponse<EClient>> DeleteAsync(Guid clientId)
         {
-            throw new NotImplementedException();
+            try
+            {
+
+                await _clientRepository.DeleteAsync(clientId);
+                var apiResponse = new ApiResponse<EClient>()
+                {
+                    Success = true,
+                    Message = "Usuario eliminado",
+
+                };
+
+                return apiResponse;
+
+            }
+            catch (Exception e)
+            {
+
+                var apiResponse = new ApiResponse<EClient>()
+                {
+                    Success = false,
+                    Message = "Error al eliminar el usuario",
+                    Errors = new List<string>() { e.Message }
+
+                };
+
+                return apiResponse;
+            }
         }
 
-        public Task<List<EClient>> GetAllAsync()
+        public async Task<ApiResponse<IEnumerable<EClient>>> GetAllAsync()
         {
-            var allClients= _clientRepository.GetAllAsync();
 
-            return allClients;
+            try
+            {
+
+                var allClients = await _clientRepository.GetAllAsync() ?? throw new Exception();
+                var apiResponse = new ApiResponse<IEnumerable<EClient>>()
+                {
+                    Success = true,
+                    Message = "Lista de todos los clientes",
+                    Data = allClients
+
+
+                };
+
+                return apiResponse;
+
+            }
+            catch (Exception e)
+            {
+
+                var apiResponse = new ApiResponse<IEnumerable<EClient>>()
+                {
+                    Success = false,
+                    Message = "Error al listar todos el los clientes",
+                    Errors = new List<string>() { e.Message }
+
+                };
+
+                return apiResponse;
+            }
+
         }
 
-        public Task<EClient> GetByIdAsync(Guid clientId)
+        public async Task<ApiResponse<EClient>> GetByIdAsync(Guid clientId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var clientById = await _clientRepository.GetByIdAsync(clientId) ?? throw new Exception("Error el cliente no existe");
+                var apiResponse = new ApiResponse<EClient>()
+                {
+                    Success = true,
+                    Message = "Datos del usuario " + clientId,
+                    Data = clientById
+
+                };
+
+                return apiResponse;
+
+            }
+            catch (Exception e)
+            {
+
+                var apiResponse = new ApiResponse<EClient>()
+                {
+                    Success = false,
+                    Message = "Error buscar el usuario",
+                    Errors = new List<string>() { e.Message }
+
+                };
+
+                return apiResponse;
+            }
+
         }
 
-        public Task<EClient> UpdateAsync(EClient client)
+        public async Task<ApiResponse<EClient>> UpdateAsync(Guid clientId, EClient client)
         {
-            throw new NotImplementedException();
+            try
+            {
+
+                //validate if a client exists
+                var clientExists = await _clientRepository.GetByIdAsync(clientId) ?? throw new Exception("No existe el cliente");
+
+                await _clientRepository.UpdateAsync(clientId, client);
+                var apiResponse = new ApiResponse<EClient>()
+                {
+                    Success = true,
+                    Message = "Usuario actualizado",
+
+                };
+
+                return apiResponse;
+
+            }
+            catch (Exception e)
+            {
+
+                var apiResponse = new ApiResponse<EClient>()
+                {
+                    Success = false,
+                    Message = "Error al actualizar el usuario",
+                    Errors = new List<string>() { e.Message }
+
+                };
+
+                return apiResponse;
+            }
         }
     }
 }
