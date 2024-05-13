@@ -15,8 +15,8 @@ namespace AA.FinTechBank.Domain.Entities
         public string ClientAddress { get; set; }
         public string ClientPhone { get; set; }
         public string ClientEmail { get; set; }
-        public ClientTypes ClientType { get; set; }
-        public MaritalStatusType ClientMaritalStatus { get; set; }
+        public string ClientType { get; set; }
+        public string ClientMaritalStatus { get; set; }
         public int ClientIdentificationId { get; set; }
         public string ClientOccupation {  get; set; }
         public string ClientGenre { get; set; }
