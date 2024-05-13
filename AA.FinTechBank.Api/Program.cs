@@ -9,7 +9,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 //Add dependency inyection
 builder.Services.AddScoped<IClientService, ClientService>();
-builder.Services.AddScoped<IClientRepository,ClientRepository>();   
+builder.Services.AddScoped<IClientRepository,ClientRepository>();
+
+// Add Routus config
+builder.Services.Configure<RouteOptions>(options =>
+{
+    options.LowercaseUrls = true; 
+});
 
 // Add services to the container.
 
