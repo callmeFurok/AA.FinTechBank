@@ -16,7 +16,7 @@ El presente documento contiene las instrucciones para usar la aplicacion de prue
 - [Prerrequisitos](#prerrequisitos)
 - [Guía de instalación](#guía-de-instalación)
 - [Construido con](#construido-con)
-- [#Guia de Uso ](guia-de-uso)
+- [Guia de Uso ](guia-de-uso)
 
 ---
 # Historia de Usuario
