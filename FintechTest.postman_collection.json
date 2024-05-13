@@ -1,0 +1,260 @@
+{
+	"info": {
+		"_postman_id": "333c6f92-61b8-4fdc-ae90-0b3e98d6ee11",
+		"name": "FintechTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33659215"
+	},
+	"item": [
+		{
+			"name": "Obtener todos los clientes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWFndWlycmUiLCJleHAiOjE3MTU2MDMwNzMsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcyMjQvIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIyNC8ifQ.cLXFGMqd6m_i91Nm7tR4g422eZeF1p9QQA3KDZuaB_4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/clients",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener cliente por Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWFndWlycmUiLCJleHAiOjE3MTU2MDMwNzMsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcyMjQvIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIyNC8ifQ.cLXFGMqd6m_i91Nm7tR4g422eZeF1p9QQA3KDZuaB_4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/clients/dc381b66-80ac-40cd-a84e-844295ca3893",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clients",
+						"dc381b66-80ac-40cd-a84e-844295ca3893"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"aaguirre\",\r\n  \"email\": \"aaguirre@mail.com\",\r\n  \"password\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Token Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"aaguirre\",\r\n  \"password\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Cliente",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWFndWlycmUiLCJleHAiOjE3MTU2MDMwNzMsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcyMjQvIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIyNC8ifQ.cLXFGMqd6m_i91Nm7tR4g422eZeF1p9QQA3KDZuaB_4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"clientName\": \"Pedro\",\r\n  \"clientLastName\": \"Fernandez\",\r\n  \"clientCount\": 2549833,\r\n  \"clientBalance\": 100,\r\n  \"clientDateOfBirth\": \"1983-06-13T11:56:02.817Z\",\r\n  \"clientAddress\": \"Quito\",\r\n  \"clientPhone\": \"0993568750\",\r\n  \"clientEmail\": \"pedro.fernandez@gmail.com\",\r\n  \"clientType\": \"individual\",\r\n  \"clientMaritalStatus\": \"soltero\",\r\n  \"clientIdentificationId\": 171236992,\r\n  \"clientOccupation\": \"Docente\",\r\n  \"clientGenre\": \"Masculino\",\r\n  \"clientNationality\": \"Ecuatoriano\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/clients",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Cliente",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWFndWlycmUiLCJleHAiOjE3MTU2MDMwNzMsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcyMjQvIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIyNC8ifQ.cLXFGMqd6m_i91Nm7tR4g422eZeF1p9QQA3KDZuaB_4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"clientName\": \"Juan Arturo\",\r\n    \"clientLastName\": \"Fernandez\",\r\n    \"clientCount\": 2549822,\r\n    \"clientBalance\": 100,\r\n    \"clientDateOfBirth\": \"1980-05-13T11:56:02.817Z\",\r\n    \"clientAddress\": \"Quito\",\r\n    \"clientPhone\": \"0993568745\",\r\n    \"clientEmail\": \"juan.fernandez@gmail.com\",\r\n    \"clientType\": \"individual\",\r\n    \"clientMaritalStatus\": \"soltero\",\r\n    \"clientIdentificationId\": 171236992,\r\n    \"clientOccupation\": \"Decano\",\r\n    \"clientGenre\": \"Masculino\",\r\n    \"clientNationality\": \"Ecuatoriano\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/clients/dc381b66-80ac-40cd-a84e-844295ca3893",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clients",
+						"dc381b66-80ac-40cd-a84e-844295ca3893"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar cliente con Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWFndWlycmUiLCJleHAiOjE3MTU2MDMwNzMsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjcyMjQvIiwiYXVkIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIyNC8ifQ.cLXFGMqd6m_i91Nm7tR4g422eZeF1p9QQA3KDZuaB_4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"clientName\": \"Juan Arturo\",\r\n    \"clientLastName\": \"Fernandez\",\r\n    \"clientCount\": 2549822,\r\n    \"clientBalance\": 100,\r\n    \"clientDateOfBirth\": \"1980-05-13T11:56:02.817Z\",\r\n    \"clientAddress\": \"Quito\",\r\n    \"clientPhone\": \"0993568745\",\r\n    \"clientEmail\": \"juan.fernandez@gmail.com\",\r\n    \"clientType\": \"individual\",\r\n    \"clientMaritalStatus\": \"soltero\",\r\n    \"clientIdentificationId\": 171236992,\r\n    \"clientOccupation\": \"Decano\",\r\n    \"clientGenre\": \"Masculino\",\r\n    \"clientNationality\": \"Ecuatoriano\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/clients/dc381b66-80ac-40cd-a84e-844295ca3893",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clients",
+						"dc381b66-80ac-40cd-a84e-844295ca3893"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
